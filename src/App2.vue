@@ -2,7 +2,7 @@
   <div id="app2">
 {{msg}}    
 
-<report-itself></report-itself>
+<report-itselfs></report-itselfs>
 
   </div>
 </template>
@@ -18,7 +18,7 @@ export default {
     }
   },
   components: {
-    reportItself: Report
+    reportItselfs: Report
   }
 }
 </script>

@@ -23,7 +23,10 @@ export default {
   },
     computed: {
       mySelectedReport: function(){
+        if (this.$store.getters.selectedReport){
+          console.log(this.$store.getters.selectedReport)
         return this.$store.getters.selectedReport
+        }
       }
     }
 }

@@ -5,11 +5,11 @@
     <br>
     <hr>
     <br>
-    <report-itself></report-itself>
-<!--      <br>
+<!--     <report-itself></report-itself>
+ -->     <br>
     <hr>
     <br>
-        <button @click="createWindow">Create Window</button> -->
+        <button @click="createWindow">Create Window</button>
   </div>
 
 
