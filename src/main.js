@@ -33,9 +33,9 @@ var app = new Vue({
 })
 
 
-var app2 = new Vue({
-  el: '#app2',
-  render: h => h(App2),
-  store: store
-})
+// var app2 = new Vue({
+//   el: '#app2',
+//   render: h => h(App2),
+//   store: store
+// })
 

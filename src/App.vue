@@ -6,10 +6,10 @@
     <hr>
     <br>
     <report-itself></report-itself>
-<!--      <br>
+     <br>
     <hr>
     <br>
-        <button @click="createWindow">Create Window</button> -->
+        <button @click="createWindow">Create Window</button>
   </div>
 
 
@@ -33,7 +33,10 @@ export default {
   },
   methods: {
     createWindow: function(){
-      new windowmanager.Window({url: "../report.html", width: 500, height: 500, frame: false})
+      var report = new windowmanager.Window({url: "../report.html", width: 500, height: 500, frame: false})
+      console.log(this)
+      report.setTitle(this.$store.getters.selectedReport.value)
+
     }
   }
 }
