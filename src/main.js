@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import App2 from './App2.vue'
 
 Vue.use(Vuex)
+
 var store = new Vuex.Store({
 	state: {
 	 	reports: [
@@ -11,7 +12,8 @@ var store = new Vuex.Store({
 			{value: "report2", text: 'this is the second report', image: 'http://www.rescueghanamission.org/wp-content/uploads/2017/04/bao-cao.jpg'},
 			{value: "report3", text: 'this is the third report', image: 'http://www.q4blog.com/wp-content/uploads/2015/10/1099-r.png'},
 		],
-		selected: ''
+		selected: '',
+		foobar: 'bazbuzz'
 	},
 	mutations: {
 		updateSelection (state, value){
@@ -19,23 +21,25 @@ var store = new Vuex.Store({
 		}
 	},
 	getters: {
-		selectedReport: state => {
+		selectedReport: function (state){
 			return state.reports.filter(item=> item.value === state.selected)[0]
 		}
 	}
 })
 
-
-var app = new Vue({
+// if (document.getElementById('app')){
+	var app = new Vue({
   el: '#app',
   render: h => h(App),
   store: store
 })
+// }
 
-
-var app2 = new Vue({
+// if (document.getElementById('app2')){
+	var app2 = new Vue({
   el: '#app2',
   render: h => h(App2),
   store: store
 })
+// }
 

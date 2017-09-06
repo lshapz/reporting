@@ -33,7 +33,7 @@ export default {
   },
   methods: {
     createWindow: function(){
-      new windowmanager.Window({url: "../report.html", width: 500, height: 500, frame: false})
+      new windowmanager.Window({url: "../report.html", width: 1000, height: 600, frame: false})
     }
   }
 }
