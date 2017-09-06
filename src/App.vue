@@ -1,9 +1,18 @@
 <template>
   <div id="app">
-    {{msg}}
+  {{msg}}   
     <select-report></select-report>
+    <br>
+    <hr>
+    <br>
     <report-itself></report-itself>
+<!--      <br>
+    <hr>
+    <br>
+        <button @click="createWindow">Create Window</button> -->
   </div>
+
+
 </template>
 
 <script>
@@ -14,12 +23,18 @@ export default {
   name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      selected: ''
     }
   },
   components: {
     selectReport: Select,
     reportItself: Report
+  },
+  methods: {
+    createWindow: function(){
+      new windowmanager.Window({url: "../report.html", width: 500, height: 500, frame: false})
+    }
   }
 }
 </script>

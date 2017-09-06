@@ -1,7 +1,7 @@
 <template>
 
 <div>
-                <select id="reporter" v-model="$store.state.selected">
+                <select id="reporter" @change="updateStore">
                  	<option value="" selected disabled>Choose A Report</option>
                 	<option v-for="report in $store.state.reports" :value="report.value">
                 		{{report.text}} 
@@ -17,6 +17,11 @@
 <script>
 import {store} from './main.js'
 export default {
+
+	methods: {updateStore: function(event){
+		this.$store.commit('updateSelection', event.target.value)
+
+	}}
    //  data: function(){
    //      return{
    //          reports: [

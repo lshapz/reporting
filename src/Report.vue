@@ -1,9 +1,11 @@
 <template>
 
 <div>
-    <div v-if="selectedReport" style="text-align:center;" class="window-drag">
-      <h1>{{selectedReport.text}}</h1>
-      <img :src="selectedReport.image" style="width:100%;max-width:500px;">
+{{test}}
+    <div v-if="mySelectedReport" style="text-align:center;" class="window-drag">
+    {{test + ", sir!"}}
+      <h1>{{mySelectedReport.text}}</h1>
+      <img :src="mySelectedReport.image" style="width:100%;max-width:500px;">
     </div>
 
 </div>
@@ -13,14 +15,15 @@
 </template>
 <script>
 export default {
+  data: function(){
+    return {
+      test: "REPORTING for duty"
+    }
+
+  },
     computed: {
-      selectedReport: function(){
-        var myreport
-        console.log(this.$store.state)
-        if (this.$store.state.selected){
-          myreport = this.$store.state.reports.filter(item=>{return item.value === this.$store.state.selected})[0]
-        }
-        return myreport
+      mySelectedReport: function(){
+        return this.$store.getters.selectedReport
       }
     }
 }
