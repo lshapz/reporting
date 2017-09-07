@@ -1,13 +1,10 @@
 <template>
 
-<div>
-{{test}}
+<div class="window-drag">
     <div v-if="mySelectedReport" style="text-align:center;" class="window-drag">
-    {{test + ", sir!"}}
-      <h1>{{mySelectedReport.text}}</h1>
-      <img :src="mySelectedReport.image" style="width:100%;max-width:500px;">
+      <h1 class="window-drag">{{mySelectedReport.text}}</h1>
+      <img class="window-drag" :src="mySelectedReport.image" style="width:100%;max-width:450px;">
     </div>
-
 </div>
 
 </div>
@@ -17,15 +14,28 @@
 export default {
   data: function(){
     return {
-      test: "REPORTING for duty"
     }
-
   },
     computed: {
-      mySelectedReport: function(){
-        return this.$store.getters.selectedReport
-      }
+    mySelectedReport: function(){
+      return this.$store.getters.selectedReport
     }
+  },
+  mounted(){
+    console.log(this.props.selection)
+      window.windowmanager.onReady(function(){
+        window.windowmanager.messagebus.on('report-selected', function(event){
+          // self.App.$store.commit('updateSelection', event)
+          console.log(event)
+          console.log(self.App.$store.getters.selectedReport)
+          console.log(this._window)
+          console.log(this.computed)
+          console.log(this.$store)
+        })
+      })
+
+  }
+  
 }
 
 </script>

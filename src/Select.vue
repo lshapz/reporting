@@ -20,7 +20,6 @@ export default {
 
 	methods: {updateStore: function(event){
 		this.$store.commit('updateSelection', event.target.value)
-
 	}}
    //  data: function(){
    //      return{

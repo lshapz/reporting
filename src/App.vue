@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-  {{msg}}   
-    <select-report></select-report>
-    <br>
-    <hr>
-    <br>
-    <report-itself></report-itself>
-<!--      <br>
-    <hr>
-    <br>
-        <button @click="createWindow">Create Window</button> -->
-  </div>
 
+    <div v-if="location.includes('report')">
+        <select-report></select-report>
+
+      <report-itself></report-itself>
+    </div>
+
+    <div v-else>
+      <button @click="createWindow">Create Window</button>
+      <hr>  
+    </div>
+</div>
 
 </template>
 
@@ -24,16 +24,23 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      selected: ''
+      created: '',
+      location: window.location.href
     }
   },
   components: {
     selectReport: Select,
-    reportItself: Report
+    reportItself: Report,
+  },
+  computed: {
+    mySelectedReport: function(){
+      return this.$store.getters.selectedReport
+    }
   },
   methods: {
     createWindow: function(){
-      new windowmanager.Window({url: "../report.html", width: 500, height: 500, frame: false})
+      new windowmanager.Window({url: "../report.html", width: 500, height: 600, frame: false})
+      this.created = true
     }
   }
 }
