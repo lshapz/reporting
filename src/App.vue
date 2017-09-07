@@ -2,12 +2,12 @@
   <div id="app">
 
     <div v-if="location.includes('report')">
-        <select-report></select-report>
 
       <report-itself></report-itself>
     </div>
 
     <div v-else>
+        <select-report></select-report>
       <button @click="createWindow">Create Window</button>
       <hr>  
     </div>
