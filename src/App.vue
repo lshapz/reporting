@@ -2,13 +2,15 @@
   <div id="app">
 
     <div v-if="location.includes('report')">
-        <select-report></select-report>
 
       <report-itself></report-itself>
     </div>
 
     <div v-else>
-      <button @click="createWindow">Create Window</button>
+      <select-report></select-report>
+      <div v-if="!created">
+        <button @click="createWindow">Create Window</button>
+      </div>
       <hr>  
     </div>
 </div>

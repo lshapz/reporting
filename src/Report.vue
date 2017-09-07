@@ -22,15 +22,9 @@ export default {
     }
   },
   mounted(){
-    console.log(this.props.selection)
       window.windowmanager.onReady(function(){
         window.windowmanager.messagebus.on('report-selected', function(event){
-          // self.App.$store.commit('updateSelection', event)
-          console.log(event)
-          console.log(self.App.$store.getters.selectedReport)
-          console.log(this._window)
-          console.log(this.computed)
-          console.log(this.$store)
+          self.App.$store.commit('updateSelection', event)
         })
       })
 
