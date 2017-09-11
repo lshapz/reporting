@@ -3,26 +3,28 @@ import App from './App.vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
+Vue.config.debug = true; Vue.config.devtools = true
 var store = new Vuex.Store({
 	state: {
+		selected: '', 
 	 	reports: [
 			{value: "report1", text: 'this is the first report', image: 'http://1.bp.blogspot.com/-nzm908Pfunw/VqXgeRNp4LI/AAAAAAAACJI/wgeVntLSIT8/s1600/status-report.png'},
 			{value: "report2", text: 'this is the second report', image: 'http://www.rescueghanamission.org/wp-content/uploads/2017/04/bao-cao.jpg'},
-			{value: "report3", text: 'this is the third report', image: 'http://www.q4blog.com/wp-content/uploads/2015/10/1099-r.png'},
+			{value: "report3", text: 'this is the third report', 
+			data: {columns: ['', 'price', 'value', 'sold'], rows: [["client 1", '$20', '$50', "true"], ["client 2", '$30', '$40', "false"], ["client 3", '$60', '$150', "true"], ["client 4", '$250', '$30', "true"]]}}
 		],
-		selected: ''
 	},
+
 	mutations: {
 		updateSelection (state, value){
-			state.selected = value
-			console.log(window.windowmanager)
 			window.windowmanager.messagebus.send('report-selected', value)
-		}
+			state.selected = value
+		},
 	},
 	getters: {
 		selectedReport: state => {
 			return state.reports.filter(item=> item.value === state.selected)[0]
-		}
+		},
 	}
 })
 
@@ -34,9 +36,3 @@ var app = new Vue({
 })
 
 window.App = app
-// var app2 = new Vue({
-//   el: '#app2',
-//   render: h => h(App2),
-//   store: store
-// })
-

@@ -2,15 +2,11 @@
   <div id="app">
 
     <div v-if="location.includes('report')">
-
       <report-itself></report-itself>
     </div>
-
     <div v-else>
       <select-report></select-report>
-      <div v-if="!created">
-        <button @click="createWindow">Create Window</button>
-      </div>
+       <button @click="createWindow">View Report</button>
       <hr>  
     </div>
 </div>
@@ -20,30 +16,31 @@
 <script>
 import Select from './Select.vue'
 import Report from './Report.vue'
-
+import {mapState} from 'vuex'
 export default {
   name: 'app',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      created: '',
-      location: window.location.href
+      location: window.location.href,
     }
   },
   components: {
     selectReport: Select,
     reportItself: Report,
   },
-  computed: {
-    mySelectedReport: function(){
-      return this.$store.getters.selectedReport
-    }
-  },
+  computed:
+    mapState({created: state=>state.creation, mySelectedReport: state=> state.selectedReport})
+  ,
   methods: {
     createWindow: function(){
-      new windowmanager.Window({url: "../report.html", width: 500, height: 600, frame: false})
-      this.created = true
-    }
+      if (windowmanager.Window.getAll().length > 1){
+        windowmanager.Window.getAll()[1].close()
+      }
+      var foobar = new windowmanager.Window({url: "../report.html", width: 500, height: 600, frame: false})
+      foobar.setTitle(this.$store.getters.selectedReport.value)  
+      this.hasChild = true
+    } 
   }
 }
 </script>
