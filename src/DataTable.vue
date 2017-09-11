@@ -29,4 +29,14 @@ export default {
 
 
 <style>
+table {
+  position: relative;
+  left:30%;
+  border: 1px dashed black;
+}
+
+th, td {
+    border: 1px dashed black;
+
+}
 </style>
