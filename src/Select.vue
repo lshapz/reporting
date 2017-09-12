@@ -24,6 +24,14 @@ import {store} from './main.js'
         selected: ''
       }
     },
+    computed: {
+      formatedReports: function(){
+        this.$store.state.reports.map(item=>{
+          item.formatted = item.value.replace(/(\d+)([a-z]+)/g,'$1 $2')
+          return item
+        })
+      }
+    },
     methods: {
       consoling: function(event){
         console.log(this.selected)
