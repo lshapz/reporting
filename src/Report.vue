@@ -40,11 +40,11 @@ export default {
     }
   },
   mounted(){
-      window.windowmanager.onReady(function(){
-        window.windowmanager.messagebus.on('report-selected', function(event){
-          self.App.$store.commit('updateSelection', event)
-        }) 
-      })
+      // window.windowmanager.onReady(function(){
+      //   window.windowmanager.messagebus.on('report-selected', function(event){
+      //     self.App.$store.commit('updateSelection', event)
+      //   }) 
+      // })
       var firstTitle = window.windowmanager.Window.getCurrent().getTitle()
       this.$store.commit('updateSelection', firstTitle)
   },
@@ -79,14 +79,5 @@ export default {
   left: 45%; 
   position:absolute;
 }
-table {
-  position: relative;
-  left:30%;
-  border: 1px dashed black;
-}
 
-th, td {
-    border: 1px dashed black;
-
-}
 </style>

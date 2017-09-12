@@ -6,7 +6,6 @@
     </div>
     <div v-else>
       <select-report></select-report>
-       <button @click="createWindow">View Report</button>
       <hr>  
     </div>
 </div>
@@ -29,19 +28,11 @@ export default {
     selectReport: Select,
     reportItself: Report,
   },
-  computed:
-    mapState({created: state=>state.creation, mySelectedReport: state=> state.selectedReport})
-  ,
-  methods: {
-    createWindow: function(){
-      if (windowmanager.Window.getAll().length > 1){
-        windowmanager.Window.getAll()[1].close()
-      }
-      var foobar = new windowmanager.Window({url: "../report.html", width: 500, height: 600, frame: false})
-      foobar.setTitle(this.$store.getters.selectedReport.value)  
-      this.hasChild = true
-    } 
-  }
+  computed: mapState({
+    created: state=>state.creation, 
+    mySelectedReport: state=> state.selectedReport
+  })
+
 }
 </script>
 
